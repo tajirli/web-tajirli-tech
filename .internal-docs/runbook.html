@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runbook | El Basma Internal Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>El Basma Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Engineering Runbook</h1>
+      <p>
+        Operational notes for local dev, release checks, and architecture-safe update workflow.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a href="progress.html">Progress Tracker</a>
+      <a class="active" href="runbook.html">Runbook</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-6">
+        <h2>Local Development</h2>
+        <ol class="list-clean">
+          <li>npm install</li>
+          <li>set VITE_API_URL in .env if backend URL differs</li>
+          <li>npm run dev</li>
+          <li>open http://localhost:5173</li>
+          <li>validate product listing and admin login flows</li>
+        </ol>
+      </article>
+
+      <article class="card span-6">
+        <h2>Release Checklist</h2>
+        <ul class="list-clean">
+          <li>Run npm run build and ensure dist output is healthy.</li>
+          <li>Verify /products/:slug and /p/:shortId behavior.</li>
+          <li>Confirm admin profile save and password change actions.</li>
+          <li>Confirm pixel IDs are optional and do not break UI.</li>
+          <li>Validate Arabic and French language toggles.</li>
+        </ul>
+      </article>
+
+      <article class="card span-12">
+        <h2>Architecture Update Workflow</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Action</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Map impacted files and domain boundaries</td>
+                <td>Impact list in progress tracker notes</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Apply change in feature/core/shared module first</td>
+                <td>Typed or modular implementation</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Keep backward compatibility in src/api.js if needed</td>
+                <td>No regression for existing JS consumers</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Test storefront, admin, and analytics paths</td>
+                <td>Confidence before merge/deploy</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Update .internal-docs pages if architecture shifts</td>
+                <td>Internal docs remain current</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </div>
+  <script src="assets/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Tracker | El Basma Internal Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>El Basma Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Progress and Architecture Update Tracker</h1>
+      <p>
+        Update sprint progress here. The form stores values in local browser storage, so you can quickly track progress snapshots without touching the production UI.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a class="active" href="progress.html">Progress Tracker</a>
+      <a href="runbook.html">Runbook</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-4">
+        <h3>Completion</h3>
+        <p id="completedPercentValue" class="kpi">0%</p>
+        <p class="meta">Engineering migration and quality baseline</p>
+      </article>
+
+      <article class="card span-4">
+        <h3>Current Sprint</h3>
+        <p id="currentSprintValue" class="meta">-</p>
+      </article>
+
+      <article class="card span-4">
+        <h3>Next Milestone</h3>
+        <p id="nextMilestoneDateValue" class="meta">TBD</p>
+      </article>
+
+      <article class="card span-6">
+        <h2>Editable Status Form</h2>
+        <form id="progressForm">
+          <label for="completedPercent">Completed (%)</label>
+          <input id="completedPercent" name="completedPercent" type="number" min="0" max="100" required>
+
+          <label for="currentSprint">Current sprint focus</label>
+          <input id="currentSprint" name="currentSprint" type="text" required>
+
+          <label for="nextMilestoneDate">Next milestone date</label>
+          <input id="nextMilestoneDate" name="nextMilestoneDate" type="date">
+
+          <label for="blockers">Main blockers / risks</label>
+          <textarea id="blockers" name="blockers"></textarea>
+
+          <label for="notes">Architecture update notes</label>
+          <textarea id="notes" name="notes"></textarea>
+
+          <div class="actions">
+            <button type="submit">Save Snapshot</button>
+          </div>
+          <p id="saveMessage" class="meta"></p>
+        </form>
+      </article>
+
+      <article class="card span-6">
+        <h2>Suggested Workstream Board</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Workstream</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>API bridge convergence</td>
+                <td>Frontend</td>
+                <td><span class="badge warn">In Progress</span></td>
+                <td>Consolidate calls from src/api.js into typed services</td>
+              </tr>
+              <tr>
+                <td>Admin security hardening</td>
+                <td>Frontend + Backend</td>
+                <td><span class="badge warn">In Progress</span></td>
+                <td>Token handling and session expiry UX improvements</td>
+              </tr>
+              <tr>
+                <td>Tracking quality checks</td>
+                <td>Marketing Tech</td>
+                <td><span class="badge ok">Active</span></td>
+                <td>Validate event payloads for all main conversion actions</td>
+              </tr>
+              <tr>
+                <td>i18n modularization</td>
+                <td>Frontend</td>
+                <td><span class="badge risk">Pending</span></td>
+                <td>Split large locale file into domain-level translation files</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <script src="assets/theme.js"></script>
+  <script src="assets/progress.js"></script>
+</body>
+</html>
