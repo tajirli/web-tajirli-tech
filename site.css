@@ -108,6 +108,38 @@ a {
   color: var(--accent-3);
 }
 
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.lang-switcher label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.lang-switcher select {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #ffffff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.lang-switcher select:focus-visible {
+  outline: 2px solid rgba(21, 87, 214, 0.35);
+  outline-offset: 1px;
+}
+
 .page {
   width: min(1180px, 94vw);
   margin: 16px auto 34px;
@@ -322,6 +354,65 @@ h1 {
   background: linear-gradient(155deg, rgba(235, 138, 41, 0.12), rgba(21, 87, 214, 0.08));
 }
 
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.step-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-index {
+  margin: 0;
+  color: var(--accent-3);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 0.76rem;
+}
+
+.step-card h3 {
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+.step-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.role-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.role-card h3 {
+  font-size: 1.07rem;
+}
+
+.role-card p {
+  margin: 8px 0 12px;
+  color: var(--muted);
+}
+
+.role-card a {
+  font-weight: 700;
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -374,6 +465,26 @@ h1 {
   padding: 8px;
 }
 
+body.rtl {
+  font-family: 'Tajawal', 'Plus Jakarta Sans', 'Segoe UI', Tahoma, sans-serif;
+}
+
+body.rtl .check-list,
+body.rtl .bullet-list {
+  padding-right: 18px;
+  padding-left: 0;
+}
+
+body.rtl .section-head {
+  text-align: right;
+}
+
+body.rtl .hero-actions,
+body.rtl .meta-row,
+body.rtl .topnav {
+  justify-content: flex-start;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -400,6 +511,11 @@ h1 {
   .card {
     grid-column: span 6;
   }
+
+  .flow-grid,
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -408,6 +524,10 @@ h1 {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .lang-switcher {
+    order: 2;
   }
 
   .page {
@@ -435,6 +555,11 @@ h1 {
   }
 
   .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-grid,
+  .role-grid {
     grid-template-columns: 1fr;
   }
 

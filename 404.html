@@ -4,32 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found | Tajirli Tech</title>
+  <meta name="description" content="Tajirli Tech fallback page with quick recovery links.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-page="404">
+  <header class="topbar" aria-label="Fallback navigation">
+    <a class="brand" href="index.html" aria-label="Tajirli home" data-i18n-attr="aria-label:brand.aria">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span data-i18n="brand.name">Tajirli Tech Hub</span>
+    </a>
+    <div class="lang-switcher">
+      <label for="languageSelect" data-i18n="lang.label">Language</label>
+      <select id="languageSelect" aria-label="Language selector" data-i18n-attr="aria-label:lang.aria">
+        <option value="en" data-i18n="lang.en">English</option>
+        <option value="fr" data-i18n="lang.fr">Francais</option>
+        <option value="ar" data-i18n="lang.ar">Arabic</option>
+      </select>
+    </div>
+    <a class="button button-primary topcta" href="index.html" data-i18n="notfound.home">Back to Homepage</a>
+  </header>
+
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">404</p>
-      <h1>We could not find that page.</h1>
-      <p class="lead">
+      <p class="eyebrow" data-i18n="notfound.code">404</p>
+      <h1 data-i18n="notfound.title">We could not find that page.</h1>
+      <p class="lead" data-i18n="notfound.lead">
         You will be redirected to the homepage in a moment. If you prefer, choose one of the quick links below.
       </p>
       <div class="hero-actions">
-        <a class="button button-primary" href="index.html">Back to Homepage</a>
-        <a class="button button-secondary" href="docs/index.html">Open Main Docs</a>
-        <a class="button button-secondary" href="docs/app-tajirli/index.html">Open App Docs</a>
+        <a class="button button-primary" href="index.html" data-i18n="notfound.home">Back to Homepage</a>
+        <a class="button button-secondary" href="docs/index.html" data-i18n="notfound.docs">Open Main Docs</a>
+        <a class="button button-secondary" href="docs/app-tajirli/index.html" data-i18n="notfound.app">Open App Docs</a>
       </div>
     </section>
 
     <section class="panel" aria-label="Helpful links">
-      <h3>Helpful Links</h3>
+      <h3 data-i18n="notfound.helpTitle">Helpful Links</h3>
       <div class="meta-row">
-        <a class="chip" href="docs/architecture.html">Architecture</a>
-        <a class="chip" href="docs/runbook.html">Runbook</a>
-        <a class="chip" href="docs/progress.html">Progress Tracker</a>
+        <a class="chip" href="docs/architecture.html" data-i18n="notfound.arch">Architecture</a>
+        <a class="chip" href="docs/runbook.html" data-i18n="notfound.runbook">Runbook</a>
+        <a class="chip" href="docs/progress.html" data-i18n="notfound.progress">Progress Tracker</a>
       </div>
     </section>
   </main>
+
+  <script src="site-i18n.js"></script>
 
   <script>
     (function () {

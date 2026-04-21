@@ -7,115 +7,175 @@
   <meta name="description" content="A clear and usable entry point for Tajirli web, app, architecture docs, and runbooks.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
 </head>
-<body>
-  <a class="skip-link" href="#mainContent">Skip to main content</a>
+<body data-page="home">
+  <a class="skip-link" href="#mainContent" data-i18n="skip.main">Skip to main content</a>
 
   <header class="topbar" aria-label="Primary navigation">
-    <a class="brand" href="index.html" aria-label="Tajirli home">
+    <a class="brand" href="index.html" aria-label="Tajirli home" data-i18n-attr="aria-label:brand.aria">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span>Tajirli Tech Hub</span>
+      <span data-i18n="brand.name">Tajirli Tech Hub</span>
     </a>
     <nav class="topnav">
-      <a href="docs/index.html">Main Docs</a>
-      <a href="docs/app-tajirli/index.html">App Docs</a>
-      <a href="docs/architecture.html">Architecture</a>
-      <a href="docs/runbook.html">Runbook</a>
+      <a href="docs/index.html" data-i18n="nav.mainDocs">Main Docs</a>
+      <a href="docs/app-tajirli/index.html" data-i18n="nav.appDocs">App Docs</a>
+      <a href="docs/architecture.html" data-i18n="nav.architecture">Architecture</a>
+      <a href="docs/runbook.html" data-i18n="nav.runbook">Runbook</a>
     </nav>
-    <a class="button button-primary topcta" href="docs/index.html">Start Here</a>
+
+    <div class="lang-switcher">
+      <label for="languageSelect" data-i18n="lang.label">Language</label>
+      <select id="languageSelect" aria-label="Language selector" data-i18n-attr="aria-label:lang.aria">
+        <option value="en" data-i18n="lang.en">English</option>
+        <option value="fr" data-i18n="lang.fr">Francais</option>
+        <option value="ar" data-i18n="lang.ar">Arabic</option>
+      </select>
+    </div>
+
+    <a class="button button-primary topcta" href="docs/index.html" data-i18n="cta.startHere">Start Here</a>
   </header>
 
   <main id="mainContent" class="page">
     <section class="hero hero-split">
       <div>
-        <p class="eyebrow">Unified Product Workspace</p>
-        <h1>Find the right document in seconds, not minutes.</h1>
-        <p class="lead">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Unified Product Workspace</p>
+        <h1 data-i18n="hero.title">Find the right document in seconds, not minutes.</h1>
+        <p class="lead" data-i18n="hero.lead">
           A structured entry point for website and mobile teams. Built around usability: clear choices, reduced cognitive load, and predictable navigation.
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="docs/index.html">Open Main Docs</a>
-          <a class="button button-secondary" href="docs/app-tajirli/index.html">Open App Docs</a>
+          <a class="button button-primary" href="docs/index.html" data-i18n="hero.openMain">Open Main Docs</a>
+          <a class="button button-secondary" href="docs/app-tajirli/index.html" data-i18n="hero.openApp">Open App Docs</a>
         </div>
       </div>
 
       <aside class="hero-panel" aria-label="Quick start">
-        <h2>Quick Start</h2>
+        <h2 data-i18n="quick.title">Quick Start</h2>
         <ol class="check-list">
-          <li>Pick your track: website or app.</li>
-          <li>Open architecture before editing modules.</li>
-          <li>Use runbook for release and deployment checks.</li>
+          <li data-i18n="quick.step1">Pick your track: website or app.</li>
+          <li data-i18n="quick.step2">Open architecture before editing modules.</li>
+          <li data-i18n="quick.step3">Use runbook for release and deployment checks.</li>
         </ol>
-        <p class="status-pill">Pages ready: root index and fallback 404 are active.</p>
+        <p class="status-pill" data-i18n="quick.status">Pages ready: root index and fallback 404 are active.</p>
       </aside>
     </section>
 
     <section class="section">
       <div class="section-head">
-        <h2>Choose Your Destination</h2>
-        <p>Each route is task-focused so teams can move faster with less friction.</p>
+        <h2 data-i18n="destinations.title">Choose Your Destination</h2>
+        <p data-i18n="destinations.lead">Each route is task-focused so teams can move faster with less friction.</p>
       </div>
 
       <section class="cards" aria-label="Project navigation">
         <article class="card">
-          <p class="card-kicker">Website</p>
-          <h3>Frontend Architecture</h3>
-          <p>Modules, API map, and migration priorities for the web experience.</p>
-          <a href="docs/architecture.html">Open Architecture</a>
+          <p class="card-kicker" data-i18n="card.website.kicker">Website</p>
+          <h3 data-i18n="card.website.title">Frontend Architecture</h3>
+          <p data-i18n="card.website.desc">Modules, API map, and migration priorities for the web experience.</p>
+          <a href="docs/architecture.html" data-i18n="card.website.link">Open Architecture</a>
         </article>
 
         <article class="card">
-          <p class="card-kicker">Mobile</p>
-          <h3>App Engineering Docs</h3>
-          <p>Core runtime, state boundaries, and operational checks for the app.</p>
-          <a href="docs/app-tajirli/index.html">Open App Docs</a>
+          <p class="card-kicker" data-i18n="card.mobile.kicker">Mobile</p>
+          <h3 data-i18n="card.mobile.title">App Engineering Docs</h3>
+          <p data-i18n="card.mobile.desc">Core runtime, state boundaries, and operational checks for the app.</p>
+          <a href="docs/app-tajirli/index.html" data-i18n="card.mobile.link">Open App Docs</a>
         </article>
 
         <article class="card">
-          <p class="card-kicker">Operations</p>
-          <h3>Runbook and Delivery</h3>
-          <p>Release controls, smoke-check flow, and deployment guardrails.</p>
-          <a href="docs/runbook.html">Open Runbook</a>
+          <p class="card-kicker" data-i18n="card.ops.kicker">Operations</p>
+          <h3 data-i18n="card.ops.title">Runbook and Delivery</h3>
+          <p data-i18n="card.ops.desc">Release controls, smoke-check flow, and deployment guardrails.</p>
+          <a href="docs/runbook.html" data-i18n="card.ops.link">Open Runbook</a>
         </article>
 
         <article class="card card-accent">
-          <p class="card-kicker">Planning</p>
-          <h3>Progress Tracker</h3>
-          <p>Centralize blockers, sprint focus, and milestone readiness snapshots.</p>
-          <a href="docs/progress.html">Open Tracker</a>
+          <p class="card-kicker" data-i18n="card.plan.kicker">Planning</p>
+          <h3 data-i18n="card.plan.title">Progress Tracker</h3>
+          <p data-i18n="card.plan.desc">Centralize blockers, sprint focus, and milestone readiness snapshots.</p>
+          <a href="docs/progress.html" data-i18n="card.plan.link">Open Tracker</a>
         </article>
       </section>
     </section>
 
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="workflow.title">Follow This Website Hierarchy</h2>
+        <p data-i18n="workflow.lead">Designed to reduce confusion and guide new team members from intent to action.</p>
+      </div>
+      <div class="flow-grid">
+        <article class="step-card">
+          <p class="step-index">01</p>
+          <h3 data-i18n="workflow.step1.title">Start from Home</h3>
+          <p data-i18n="workflow.step1.desc">Use this page to decide your path by domain and responsibility.</p>
+        </article>
+        <article class="step-card">
+          <p class="step-index">02</p>
+          <h3 data-i18n="workflow.step2.title">Open Domain Docs</h3>
+          <p data-i18n="workflow.step2.desc">Navigate to architecture, modules, and runbook documents for your track.</p>
+        </article>
+        <article class="step-card">
+          <p class="step-index">03</p>
+          <h3 data-i18n="workflow.step3.title">Execute and Track</h3>
+          <p data-i18n="workflow.step3.desc">Use runbook for implementation and progress tracker for reporting.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 data-i18n="roles.title">Choose by Role</h2>
+        <p data-i18n="roles.lead">Direct entry points for engineering, product, and operations teams.</p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card">
+          <h3 data-i18n="roles.engineer.title">Engineer</h3>
+          <p data-i18n="roles.engineer.desc">Architecture-first path for implementation and technical decisions.</p>
+          <a href="docs/architecture.html" data-i18n="roles.engineer.link">Go to Architecture</a>
+        </article>
+        <article class="role-card">
+          <h3 data-i18n="roles.product.title">Product and PM</h3>
+          <p data-i18n="roles.product.desc">Understand module boundaries, progress, and release readiness.</p>
+          <a href="docs/progress.html" data-i18n="roles.product.link">Go to Progress Tracker</a>
+        </article>
+        <article class="role-card">
+          <h3 data-i18n="roles.ops.title">Operations</h3>
+          <p data-i18n="roles.ops.desc">Run release checklists, deployment controls, and incident-safe steps.</p>
+          <a href="docs/runbook.html" data-i18n="roles.ops.link">Go to Runbook</a>
+        </article>
+      </div>
+    </section>
+
     <section class="grid-2" aria-label="Information panels">
       <article class="panel">
-        <h3>Why this layout is easier</h3>
+        <h3 data-i18n="why.title">Why this layout is easier</h3>
         <ul class="bullet-list">
-          <li>Clear hierarchy: first action appears above the fold.</li>
-          <li>Recognition over recall: labels map to real team tasks.</li>
-          <li>Reduced noise: one decision per card.</li>
-          <li>Consistent patterns across desktop and mobile.</li>
+          <li data-i18n="why.b1">Clear hierarchy: first action appears above the fold.</li>
+          <li data-i18n="why.b2">Recognition over recall: labels map to real team tasks.</li>
+          <li data-i18n="why.b3">Reduced noise: one decision per card.</li>
+          <li data-i18n="why.b4">Consistent patterns across desktop and mobile.</li>
         </ul>
       </article>
 
       <article class="panel">
-        <h3>Hosting Status</h3>
-        <p class="panel-text">
+        <h3 data-i18n="hosting.title">Hosting Status</h3>
+        <p class="panel-text" data-i18n="hosting.text">
           GitHub Pages can serve this project directly because root routing files are now present.
         </p>
         <div class="meta-row">
-          <span class="chip">Root index: ready</span>
-          <span class="chip">404 fallback: ready</span>
-          <span class="chip">Docs path: public</span>
+          <span class="chip" data-i18n="hosting.c1">Root index: ready</span>
+          <span class="chip" data-i18n="hosting.c2">404 fallback: ready</span>
+          <span class="chip" data-i18n="hosting.c3">Docs path: public</span>
         </div>
       </article>
     </section>
 
-    <footer class="footer-note">
+    <footer class="footer-note" data-i18n="footer.note">
       Tajirli Tech workspace hub. Designed for rapid, low-friction onboarding and execution.
     </footer>
   </main>
+
+  <script src="site-i18n.js"></script>
 </body>
 </html>
