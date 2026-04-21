@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tajirli Backend Docs | Modules and API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>Tajirli Backend Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Modules and API Map</h1>
+      <p>
+        Backend module ownership and route surface map derived from src/app.js, src/server.js, and feature exports.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a class="active" href="modules-api.html">Modules + API</a>
+      <a href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Core Modules</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Main Files</th>
+                <th>Responsibility</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Application Bootstrap</td>
+                <td>src/app.js, src/server.js</td>
+                <td>Server startup, middleware chain, route wiring, sockets</td>
+                <td><span class="badge ok">Stable</span></td>
+              </tr>
+              <tr>
+                <td>Core Platform</td>
+                <td>src/core/config, database, middleware, security</td>
+                <td>Configuration, DB lifecycle, security and error controls</td>
+                <td><span class="badge ok">Stable</span></td>
+              </tr>
+              <tr>
+                <td>Feature Domains</td>
+                <td>src/features/products, orders, delivery, webhooks</td>
+                <td>Business use cases with service and repository layers</td>
+                <td><span class="badge warn">Active</span></td>
+              </tr>
+              <tr>
+                <td>Route Modules</td>
+                <td>src/routes/*</td>
+                <td>Endpoint controllers for auth, settings, tracking, team, AI</td>
+                <td><span class="badge warn">Active</span></td>
+              </tr>
+              <tr>
+                <td>Integration Services</td>
+                <td>src/services/ai, media, search, social, messaging, storage</td>
+                <td>External APIs, search/indexing, social delivery, AI flows</td>
+                <td><span class="badge warn">Evolving</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Public Endpoint Families</h3>
+        <ul class="list-clean">
+          <li>GET /health</li>
+          <li>POST and GET /api/auth/*</li>
+          <li>GET /api/public/products, categories, delivery</li>
+          <li>POST /api/public/orders</li>
+          <li>GET /api/public/website-settings</li>
+          <li>POST /api/public/track</li>
+          <li>/webhook/meta, /webhook/whatsapp, /webhook/tiktok</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Protected Endpoint Families</h3>
+        <ul class="list-clean">
+          <li>/api/products, /api/orders, /api/delivery</li>
+          <li>/api/categories, /api/settings, /api/customers</li>
+          <li>/api/chat, /api/conversations, /api/sync</li>
+          <li>/api/upload, /api/website-settings</li>
+          <li>/api/track analytics endpoints</li>
+          <li>/api/ai/knowledge-base and /api/ai/config</li>
+          <li>/api/health detailed status</li>
+        </ul>
+      </article>
+
+      <article class="card span-12">
+        <h2>Operational API Notes</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Concern</th>
+                <th>Current Behavior</th>
+                <th>Owner Surface</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Authentication</td>
+                <td>JWT middleware protects business routes, auth routes remain public/self-scoped</td>
+                <td>src/core/middleware/auth + src/routes/auth.js</td>
+              </tr>
+              <tr>
+                <td>Rate Limiting</td>
+                <td>Default limiter applied on /api before endpoint dispatch</td>
+                <td>src/core/security/rateLimiter.js</td>
+              </tr>
+              <tr>
+                <td>CORS and Origins</td>
+                <td>Allowlist based on CORS_ORIGINS with local fallback regex</td>
+                <td>src/app.js + src/server.js</td>
+              </tr>
+              <tr>
+                <td>Webhook Integrity</td>
+                <td>Raw JSON body is captured for verification before normal parsing</td>
+                <td>src/app.js webhook parser block</td>
+              </tr>
+              <tr>
+                <td>Realtime Sync</td>
+                <td>Socket.IO rooms handle dashboard, conversation, and sync broadcasts</td>
+                <td>src/server.js socket handlers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
