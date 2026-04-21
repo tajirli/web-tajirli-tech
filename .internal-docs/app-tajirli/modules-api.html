@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tajirli Docs | Modules and API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>App Tajirli Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Modules and API Map</h1>
+      <p>
+        Operational module map for the mobile app, including layer boundaries and endpoint consumption patterns.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a class="active" href="modules-api.html">Modules + API</a>
+      <a href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Key Modules</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Main Files</th>
+                <th>Responsibility</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Entry + Bootstrap</td>
+                <td>App.tsx, src/config/api/*</td>
+                <td>Runtime initialization and app lifecycle orchestration</td>
+                <td><span class="badge ok">Stable</span></td>
+              </tr>
+              <tr>
+                <td>Navigation</td>
+                <td>src/navigation/AppNavigator.tsx</td>
+                <td>Auth/main switch, tabs, stacks, search modal</td>
+                <td><span class="badge ok">Stable</span></td>
+              </tr>
+              <tr>
+                <td>State</td>
+                <td>src/application/state/*</td>
+                <td>Zustand domain stores and async data operations</td>
+                <td><span class="badge warn">Active</span></td>
+              </tr>
+              <tr>
+                <td>Infrastructure</td>
+                <td>src/infrastructure/api, repositories, services</td>
+                <td>Backend communication and implementation adapters</td>
+                <td><span class="badge warn">Evolving</span></td>
+              </tr>
+              <tr>
+                <td>Legacy Compatibility</td>
+                <td>src/store, src/services, src/components</td>
+                <td>Backwards-compatible re-exports for migration safety</td>
+                <td><span class="badge risk">Technical debt</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Primary Endpoint Families</h3>
+        <ul class="list-clean">
+          <li>Authentication and session endpoints</li>
+          <li>Products CRUD and publication endpoints</li>
+          <li>Orders and status update endpoints</li>
+          <li>Settings/configuration endpoints</li>
+          <li>LLM and AI assistant configuration endpoints</li>
+          <li>Synchronization status endpoint</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Refactor Priorities</h3>
+        <ul class="list-clean">
+          <li>Continue reducing legacy compatibility surface.</li>
+          <li>Separate app sync policy from screen lifecycle logic.</li>
+          <li>Add explicit typed DTO boundaries per endpoint family.</li>
+          <li>Introduce endpoint-level health checks for sync flow.</li>
+          <li>Document role/permission matrix by screen and action.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tajirli Docs | Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>App Tajirli Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>El Basma Mobile App Documentation Hub</h1>
+      <p>
+        Internal engineering documentation for the Expo + React Native app. This section tracks architecture, flows, modules, and operational runbook.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a class="active" href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-4">
+        <h2>Platform Stack</h2>
+        <ul class="list-clean">
+          <li>Expo SDK 50 + React Native 0.73</li>
+          <li>TypeScript + Zustand state</li>
+          <li>React Navigation stack + tabs</li>
+          <li>i18next (ar, dz, fr, en)</li>
+          <li>Socket.IO + Axios API client</li>
+        </ul>
+      </article>
+
+      <article class="card span-4">
+        <h2>Business Domains</h2>
+        <ul class="list-clean">
+          <li>Products lifecycle management</li>
+          <li>Orders and operations flow</li>
+          <li>Admin and role management</li>
+          <li>AI tooling and knowledge base</li>
+          <li>Analytics and conversations</li>
+        </ul>
+      </article>
+
+      <article class="card span-4">
+        <h2>Core Runtime Flow</h2>
+        <ul class="list-clean">
+          <li>App bootstrap initializes API + i18n</li>
+          <li>Auth gate chooses login or main navigator</li>
+          <li>Data stores fetch products/settings/LLM config</li>
+          <li>Auto-sync starts only when authenticated</li>
+          <li>Background state stops sync safely</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Primary Layers</h3>
+        <div class="diagram">
+          <div class="flow">
+            <div class="node">presentation + screens + navigation</div>
+            <div class="arrow">|</div>
+            <div class="node">application state (Zustand stores + use cases)</div>
+            <div class="arrow">|</div>
+            <div class="node">infrastructure (API client, repositories, services)</div>
+            <div class="arrow">|</div>
+            <div class="node">backend APIs + realtime sync endpoints</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Documentation Coverage</h3>
+        <ul class="list-clean">
+          <li>Architecture with component arrows</li>
+          <li>Module map and endpoint contracts</li>
+          <li>Operational runbook and release checklist</li>
+          <li>Migration guardrails for remote ownership</li>
+        </ul>
+        <p class="meta">Folder path: .internal-docs/app-tajirli/</p>
+      </article>
+    </section>
+
+    <p class="footer-note">Internal docs only. Not bundled into mobile runtime.</p>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
