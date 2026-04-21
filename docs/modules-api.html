@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modules and API | El Basma Internal Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>El Basma Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Module and API Reference</h1>
+      <p>
+        Practical module map for engineering updates, backend contracts, and impact analysis before any feature rollout.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a class="active" href="modules-api.html">Modules + API</a>
+      <a href="progress.html">Progress Tracker</a>
+      <a href="runbook.html">Runbook</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Primary Modules</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Key Files</th>
+                <th>Main Responsibility</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Routing + Shell</td>
+                <td>src/App.jsx</td>
+                <td>Route wiring, lazy loading, chrome visibility, pageview tracking</td>
+                <td>Admin and storefront routes are split by guard + path prefix</td>
+              </tr>
+              <tr>
+                <td>Product Domain</td>
+                <td>src/features/products/services/ProductService.ts</td>
+                <td>Product listing, category filter, typed product fetching</td>
+                <td>Exists with legacy getProducts in src/api.js</td>
+              </tr>
+              <tr>
+                <td>Order Domain</td>
+                <td>src/features/orders/services/OrderService.ts</td>
+                <td>Create order, delivery search, delivery pricing fetch</td>
+                <td>Request payload adds source/platform = website</td>
+              </tr>
+              <tr>
+                <td>Settings + Branding</td>
+                <td>src/context/SiteSettingsContext.jsx</td>
+                <td>Manage admin-customizable fields and push settings to backend</td>
+                <td>Also injects/removes tracking pixels dynamically</td>
+              </tr>
+              <tr>
+                <td>Security Utilities</td>
+                <td>src/utils/adminAuth.js</td>
+                <td>Admin login, role check, session persistence, current-user fetch</td>
+                <td>Token is stored in localStorage</td>
+              </tr>
+              <tr>
+                <td>Tracking Utilities</td>
+                <td>src/utils/metaPixel.js, src/utils/useVisitorTracker.js</td>
+                <td>Marketing and behavior events</td>
+                <td>Visitor tracker disabled on /admin paths</td>
+              </tr>
+              <tr>
+                <td>SEO/OG Function</td>
+                <td>api/products/[slug].js</td>
+                <td>Bot-aware OG pre-render for product sharing</td>
+                <td>Serves dist/index.html for non-bot traffic</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Backend API Endpoints Used</h3>
+        <ul class="list-clean">
+          <li>GET /api/public/products?publishedOnWebsite=true</li>
+          <li>GET /api/public/products/:id</li>
+          <li>POST /api/public/orders</li>
+          <li>GET /api/public/delivery</li>
+          <li>GET /api/public/delivery/city/:city</li>
+          <li>GET /api/public/delivery/search?city=...</li>
+          <li>GET /api/public/delivery-companies/search?city=...</li>
+          <li>GET /api/public/website-settings</li>
+          <li>PUT /api/website-settings (auth)</li>
+          <li>POST /api/auth/login</li>
+          <li>GET /api/auth/me (auth)</li>
+          <li>POST /api/auth/change-password (auth)</li>
+          <li>POST /api/public/track</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Refactor Priorities</h3>
+        <ul class="list-clean">
+          <li>Unify legacy src/api.js calls with typed feature services.</li>
+          <li>Replace mutable global cache logic with service-level cache utilities.</li>
+          <li>Split i18n catalog into per-locale files for maintainability.</li>
+          <li>Add automated contract checks around auth and settings endpoints.</li>
+          <li>Add typed adapters for admin and analytics workflows.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+  <script src="assets/theme.js"></script>
+</body>
+</html>

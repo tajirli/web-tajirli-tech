@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tajirli Tech Hub</title>
+  <meta name="description" content="Tajirli Tech public project hub linking website and mobile app documentation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Tajirli Platform</p>
+      <h1>One hub for web, mobile app, and delivery docs.</h1>
+      <p class="lead">
+        This page solves GitHub Pages entrypoint issues and provides a clean navigation layer for your website and app documentation.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="docs/index.html">Open Main Docs</a>
+        <a class="button button-secondary" href="docs/app-tajirli/index.html">Open App Docs</a>
+      </div>
+    </header>
+
+    <section class="cards" aria-label="Project navigation">
+      <article class="card">
+        <h2>Website Track</h2>
+        <p>Architecture, modules, APIs, and release progress for your web front-end.</p>
+        <a href="docs/architecture.html">View Website Architecture</a>
+      </article>
+
+      <article class="card">
+        <h2>Mobile App Track</h2>
+        <p>Dedicated documentation for your React Native app flows and operational runbook.</p>
+        <a href="docs/app-tajirli/index.html">View App Documentation</a>
+      </article>
+
+      <article class="card">
+        <h2>Execution & Runbook</h2>
+        <p>Delivery notes, blockers, and implementation checklists for both products.</p>
+        <a href="docs/runbook.html">Open Runbook</a>
+      </article>
+    </section>
+
+    <section class="note" aria-label="Hosting note">
+      <h3>GitHub Pages Status</h3>
+      <p>
+        The repository now contains a root <strong>index.html</strong>, so GitHub Pages can serve the site at the project root URL instead of returning 404.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tajirli Docs | Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>App Tajirli Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Mobile App Architecture</h1>
+      <p>
+        Layered architecture with app-state orchestration and auth-gated synchronization across product, order, and admin workflows.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a class="active" href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Component Interaction Diagram</h2>
+        <p class="meta">Arrows show control and data direction from app bootstrap to API and synchronization services.</p>
+        <div class="diagram-scroll">
+          <svg class="component-diagram" viewBox="0 0 1400 760" role="img" aria-label="Mobile app architecture with components and arrows">
+            <defs>
+              <marker id="arrowHead" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+                <polygon points="0 0, 10 4, 0 8" fill="var(--diagram-edge)"></polygon>
+              </marker>
+            </defs>
+
+            <rect x="30" y="30" width="300" height="76" rx="12" class="box entry"></rect>
+            <text x="50" y="60" class="box-title">App.tsx</text>
+            <text x="50" y="84" class="box-sub">initializeApiConfig + initI18n</text>
+
+            <rect x="360" y="30" width="320" height="76" rx="12" class="box context"></rect>
+            <text x="380" y="60" class="box-title">Providers</text>
+            <text x="380" y="84" class="box-sub">SafeArea + Theme + Toast</text>
+
+            <rect x="710" y="30" width="320" height="76" rx="12" class="box page"></rect>
+            <text x="730" y="60" class="box-title">AppNavigator</text>
+            <text x="730" y="84" class="box-sub">AuthNavigator or MainNavigator</text>
+
+            <rect x="1060" y="30" width="300" height="76" rx="12" class="box ui"></rect>
+            <text x="1080" y="60" class="box-title">Navigation UI</text>
+            <text x="1080" y="84" class="box-sub">Tabs, Stacks, Search modal</text>
+
+            <rect x="60" y="190" width="420" height="170" rx="14" class="box page"></rect>
+            <text x="82" y="224" class="box-title">Screens Layer</text>
+            <text x="82" y="248" class="box-sub">Dashboard, Products, Orders, Settings</text>
+            <text x="82" y="272" class="box-sub">AI Knowledge, Caption, Analytics</text>
+            <text x="82" y="296" class="box-sub">Admin Users/Roles + Auth screens</text>
+
+            <rect x="520" y="190" width="380" height="170" rx="14" class="box feature"></rect>
+            <text x="542" y="224" class="box-title">Application State</text>
+            <text x="542" y="248" class="box-sub">useProductStore, useOrderStore</text>
+            <text x="542" y="272" class="box-sub">useSettingsStore, useLLMSettingsStore</text>
+            <text x="542" y="296" class="box-sub">useAuthStore gates protected flows</text>
+
+            <rect x="930" y="190" width="430" height="170" rx="14" class="box bridge"></rect>
+            <text x="952" y="224" class="box-title">Sync and Runtime Services</text>
+            <text x="952" y="248" class="box-sub">startAutoSync / stopAutoSync</text>
+            <text x="952" y="272" class="box-sub">checkForUpdates / triggerSync</text>
+            <text x="952" y="296" class="box-sub">AppState foreground/background handling</text>
+
+            <rect x="170" y="450" width="500" height="150" rx="14" class="box core"></rect>
+            <text x="192" y="484" class="box-title">Infrastructure</text>
+            <text x="192" y="508" class="box-sub">ApiClient + config + repositories</text>
+            <text x="192" y="532" class="box-sub">Socket.IO and media upload integrations</text>
+
+            <rect x="720" y="450" width="640" height="150" rx="14" class="box backend"></rect>
+            <text x="742" y="484" class="box-title">Backend</text>
+            <text x="742" y="508" class="box-sub">Products, Orders, Settings, AI, Auth endpoints</text>
+            <text x="742" y="532" class="box-sub">Sync status endpoint + realtime channels</text>
+
+            <line x1="330" y1="68" x2="360" y2="68" class="edge"></line>
+            <line x1="680" y1="68" x2="710" y2="68" class="edge"></line>
+            <line x1="1030" y1="68" x2="1060" y2="68" class="edge"></line>
+
+            <line x1="790" y1="106" x2="270" y2="190" class="edge"></line>
+            <line x1="850" y1="106" x2="710" y2="190" class="edge"></line>
+            <line x1="930" y1="106" x2="1140" y2="190" class="edge"></line>
+
+            <line x1="480" y1="276" x2="520" y2="276" class="edge"></line>
+            <line x1="900" y1="276" x2="930" y2="276" class="edge"></line>
+
+            <line x1="640" y1="360" x2="420" y2="450" class="edge"></line>
+            <line x1="1080" y1="360" x2="980" y2="450" class="edge"></line>
+            <line x1="670" y1="525" x2="720" y2="525" class="edge"></line>
+          </svg>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <h3>Layer Responsibilities</h3>
+        <ul class="list-clean">
+          <li>Entry: startup, initialization, app lifecycle handling.</li>
+          <li>Navigation: auth gating and role-sensitive routes.</li>
+          <li>Screens: task-specific user interfaces and interactions.</li>
+          <li>State: centralized async actions and domain state.</li>
+          <li>Infrastructure: adapters to API, storage, and realtime.</li>
+        </ul>
+      </article>
+
+      <article class="card span-6">
+        <h3>Architecture Risks</h3>
+        <ul class="list-clean">
+          <li>Sync polling every 10s can increase backend load.</li>
+          <li>Store growth may create coupling between domains.</li>
+          <li>Auth gate logic must stay aligned with backend policy.</li>
+          <li>Legacy export paths can hide migration debt.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="footer-note">Baseline reviewed: 2026-04-21</p>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

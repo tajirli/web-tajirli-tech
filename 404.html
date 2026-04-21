@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Tajirli Tech</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">404</p>
+      <h1>This page does not exist.</h1>
+      <p class="lead">
+        You will be redirected to the project homepage in a moment. If redirection does not happen, use the button below.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="index.html">Back to Homepage</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      var repoSegment = parts.length > 0 ? '/' + parts[0] : '';
+      var target = repoSegment + '/';
+
+      setTimeout(function () {
+        window.location.replace(target);
+      }, 1400);
+    })();
+  </script>
+</body>
+</html>

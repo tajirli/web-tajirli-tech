@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tajirli Docs | Runbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>App Tajirli Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+
+    <section class="hero">
+      <h1>Engineering Runbook</h1>
+      <p>
+        Daily workflow and release controls for the El Basma mobile app.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a class="active" href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+
+    <section class="grid">
+      <article class="card span-6">
+        <h2>Local Setup</h2>
+        <ol class="list-clean">
+          <li>npm install</li>
+          <li>npm start</li>
+          <li>npm run android or npm run ios</li>
+          <li>Confirm API config resolves active backend URL</li>
+          <li>Login and verify data stores hydrate</li>
+        </ol>
+      </article>
+
+      <article class="card span-6">
+        <h2>Quality Checks</h2>
+        <ul class="list-clean">
+          <li>npm run type-check</li>
+          <li>npm test</li>
+          <li>Smoke test products/orders/settings flows</li>
+          <li>Validate auth pending-approval behavior</li>
+          <li>Validate app foreground/background sync behavior</li>
+        </ul>
+      </article>
+
+      <article class="card span-12">
+        <h2>Release Checklist</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Action</th>
+                <th>Expected result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Update version and release notes</td>
+                <td>Release metadata aligned with code</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Run type-check and tests</td>
+                <td>No blocking issues</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Validate high-risk screens and auth gate</td>
+                <td>Navigation and permissions are correct</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Validate sync + realtime behavior</td>
+                <td>No duplicate polling or stale state</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Push only to approved origin repository</td>
+                <td>No accidental push to legacy remote</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">Operations baseline maintained in this document.</p>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
