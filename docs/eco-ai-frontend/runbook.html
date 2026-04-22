@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco AI Frontend Docs | Runbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>Eco AI Frontend Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+    <section class="hero">
+      <h1>Frontend Runbook</h1>
+      <p>Local workflow and release checks for the Eco AI storefront.</p>
+    </section>
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a class="active" href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+    <section class="grid">
+      <article class="card span-6">
+        <h2>Local Setup</h2>
+        <ol class="list-clean">
+          <li>npm install</li>
+          <li>Set VITE_API_URL for the backend host</li>
+          <li>npm run dev</li>
+          <li>Verify language switch and portfolio carousel</li>
+          <li>Submit a contact form against a live backend</li>
+        </ol>
+      </article>
+      <article class="card span-6">
+        <h2>Checks Before Release</h2>
+        <ul class="list-clean">
+          <li>Confirm images and logo assets load correctly.</li>
+          <li>Validate FR/EN/AR rendering and RTL behavior.</li>
+          <li>Test the contact form success and error states.</li>
+          <li>Verify analytics and external links remain intact.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

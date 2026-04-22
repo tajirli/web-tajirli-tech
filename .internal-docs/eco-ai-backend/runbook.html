@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco AI Backend Docs | Runbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem('elbasma-docs-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        document.documentElement.style.colorScheme = storedTheme;
+      } catch {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="docs-topbar">
+      <div class="brand-pill"><span class="brand-dot" aria-hidden="true"></span>Eco AI Backend Docs</div>
+      <button type="button" class="theme-toggle" id="themeToggle">Dark mode</button>
+    </header>
+    <section class="hero">
+      <h1>Backend Runbook</h1>
+      <p>Local setup and deployment checks for the Eco AI backend service.</p>
+    </section>
+    <nav class="nav">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="modules-api.html">Modules + API</a>
+      <a class="active" href="runbook.html">Runbook</a>
+      <a href="../index.html">Back to Main Docs</a>
+    </nav>
+    <section class="grid">
+      <article class="card span-6">
+        <h2>Local Setup</h2>
+        <ol class="list-clean">
+          <li>npm install</li>
+          <li>Create .env with MONGODB_URI, JWT_SECRET, BREVO_API_KEY</li>
+          <li>node server.js</li>
+          <li>Check GET / and POST /contact</li>
+          <li>Validate auth routes with test user data</li>
+        </ol>
+      </article>
+      <article class="card span-6">
+        <h2>Production Checks</h2>
+        <ul class="list-clean">
+          <li>Confirm allowed origins match deployed frontend URL.</li>
+          <li>Verify MongoDB connection and write permissions.</li>
+          <li>Test Brevo email delivery from /contact.</li>
+          <li>Confirm JWT token issuance on register/login.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
