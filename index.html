@@ -51,6 +51,7 @@
         <div class="hero-actions">
           <a class="button button-primary" href="docs/index.html" data-i18n="hero.openMain">Open Main Docs</a>
           <a class="button button-secondary" href="docs/app-tajirli/index.html" data-i18n="hero.openApp">Open App Docs</a>
+          <a class="button button-secondary" href="docs/tajirli-backend/index.html">Open Backend Docs</a>
         </div>
       </div>
 
@@ -76,6 +77,7 @@
           <p class="card-kicker" data-i18n="card.website.kicker">Website</p>
           <h3 data-i18n="card.website.title">Frontend Architecture</h3>
           <p data-i18n="card.website.desc">Modules, API map, and migration priorities for the web experience.</p>
+          <p class="card-meta">Use this when: you work on pages, UI, tracking, or web APIs.</p>
           <a href="docs/architecture.html" data-i18n="card.website.link">Open Architecture</a>
         </article>
 
@@ -83,6 +85,7 @@
           <p class="card-kicker" data-i18n="card.mobile.kicker">Mobile</p>
           <h3 data-i18n="card.mobile.title">App Engineering Docs</h3>
           <p data-i18n="card.mobile.desc">Core runtime, state boundaries, and operational checks for the app.</p>
+          <p class="card-meta">Use this when: you change app screens, stores, sync, or release build behavior.</p>
           <a href="docs/app-tajirli/index.html" data-i18n="card.mobile.link">Open App Docs</a>
         </article>
 
@@ -90,6 +93,7 @@
           <p class="card-kicker" data-i18n="card.backend.kicker">Backend</p>
           <h3 data-i18n="card.backend.title">Backend Engineering Docs</h3>
           <p data-i18n="card.backend.desc">API families, backend architecture, and operational runbook for server flows.</p>
+          <p class="card-meta">Use this when: you touch auth, routes, data models, or deployment configs.</p>
           <a href="docs/tajirli-backend/index.html" data-i18n="card.backend.link">Open Backend Docs</a>
         </article>
 
@@ -97,6 +101,7 @@
           <p class="card-kicker" data-i18n="card.ops.kicker">Operations</p>
           <h3 data-i18n="card.ops.title">Runbook and Delivery</h3>
           <p data-i18n="card.ops.desc">Release controls, smoke-check flow, and deployment guardrails.</p>
+          <p class="card-meta">Use this when: you need deployment safety checks and incident-ready steps.</p>
           <a href="docs/runbook.html" data-i18n="card.ops.link">Open Runbook</a>
         </article>
 
@@ -104,6 +109,7 @@
           <p class="card-kicker" data-i18n="card.plan.kicker">Planning</p>
           <h3 data-i18n="card.plan.title">Progress Tracker</h3>
           <p data-i18n="card.plan.desc">Centralize blockers, sprint focus, and milestone readiness snapshots.</p>
+          <p class="card-meta">Use this when: you want one source of truth for roadmap and delivery status.</p>
           <a href="docs/progress.html" data-i18n="card.plan.link">Open Tracker</a>
         </article>
 
@@ -111,6 +117,7 @@
           <p class="card-kicker" data-i18n="card.ecoFrontend.kicker">Eco AI</p>
           <h3 data-i18n="card.ecoFrontend.title">Eco AI Frontend Docs</h3>
           <p data-i18n="card.ecoFrontend.desc">React storefront, multilingual UI, and contact funnel documentation.</p>
+          <p class="card-meta">Use this when: you edit Eco AI UX, translation flow, or public landing behavior.</p>
           <a href="docs/eco-ai-frontend/index.html" data-i18n="card.ecoFrontend.link">Open Frontend Docs</a>
         </article>
 
@@ -118,9 +125,79 @@
           <p class="card-kicker" data-i18n="card.ecoBackend.kicker">Eco AI</p>
           <h3 data-i18n="card.ecoBackend.title">Eco AI Backend Docs</h3>
           <p data-i18n="card.ecoBackend.desc">Express, MongoDB, and auth/contact API documentation.</p>
+          <p class="card-meta">Use this when: you touch Eco AI auth, contact endpoints, or MongoDB setup.</p>
           <a href="docs/eco-ai-backend/index.html" data-i18n="card.ecoBackend.link">Open Backend Docs</a>
         </article>
       </section>
+    </section>
+
+    <section class="section" aria-label="Beginner guidance">
+      <div class="section-head">
+        <h2>Beginner Path In 10 Minutes</h2>
+        <p>This is the fastest way to understand the project if you are new to the team.</p>
+      </div>
+      <div class="flow-grid">
+        <article class="step-card">
+          <p class="step-index">Step A</p>
+          <h3>Pick your product surface</h3>
+          <p>Choose exactly one starting surface: Website, Mobile App, Backend, or Eco AI. Avoid opening everything at once.</p>
+        </article>
+        <article class="step-card">
+          <p class="step-index">Step B</p>
+          <h3>Read architecture before code</h3>
+          <p>Open architecture docs first to understand boundaries, data flow, and dependencies before any implementation.</p>
+        </article>
+        <article class="step-card">
+          <p class="step-index">Step C</p>
+          <h3>Use runbook before release</h3>
+          <p>Run the release checklist and smoke tests before pushing to reduce regressions and deployment surprises.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Component guide">
+      <div class="section-head">
+        <h2>Component Guide</h2>
+        <p>What each homepage component is for, and how to use it without guesswork.</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <h3>Top Navigation</h3>
+          <p><strong>Purpose:</strong> quick jump to core docs without scrolling.</p>
+          <p><strong>Use it when:</strong> you already know your target track.</p>
+          <span class="guide-tag">Fast access</span>
+        </article>
+        <article class="guide-card">
+          <h3>Destination Cards</h3>
+          <p><strong>Purpose:</strong> route you by responsibility, not by file names.</p>
+          <p><strong>Use it when:</strong> you are planning a task and need the right documentation surface.</p>
+          <span class="guide-tag">Task-first mapping</span>
+        </article>
+        <article class="guide-card">
+          <h3>Workflow Section</h3>
+          <p><strong>Purpose:</strong> show the recommended order for discovery, build, and validation.</p>
+          <p><strong>Use it when:</strong> onboarding someone or preparing sprint handoff notes.</p>
+          <span class="guide-tag">Team onboarding</span>
+        </article>
+        <article class="guide-card">
+          <h3>Role Section</h3>
+          <p><strong>Purpose:</strong> remove ambiguity by role: engineer, product, or ops.</p>
+          <p><strong>Use it when:</strong> different stakeholders need different views of the same project.</p>
+          <span class="guide-tag">Role clarity</span>
+        </article>
+        <article class="guide-card">
+          <h3>Readability Panel</h3>
+          <p><strong>Purpose:</strong> explain why this layout exists and how it reduces cognitive load.</p>
+          <p><strong>Use it when:</strong> you need consistency rules for future updates.</p>
+          <span class="guide-tag">Design intent</span>
+        </article>
+        <article class="guide-card">
+          <h3>Hosting Panel</h3>
+          <p><strong>Purpose:</strong> keep deployment confidence visible from the homepage.</p>
+          <p><strong>Use it when:</strong> you troubleshoot GitHub Pages routing or static serving issues.</p>
+          <span class="guide-tag">Operations context</span>
+        </article>
+      </div>
     </section>
 
     <section class="section">
